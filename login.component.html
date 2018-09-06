@@ -1,0 +1,123 @@
+<!doctype html>
+
+
+
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Login Page</title>
+
+
+
+</head>
+
+<body class="text-center">
+
+  <div align="center">
+
+    <form class="form-signin" align="center">
+
+
+
+
+      <h1 style="color: green" class="h3 mb-3 font-weight-normal">Register</h1>
+
+
+      <label for="inputName" class="sr-only">Name</label>
+      <input type="text" id="name" [(ngModel)]="name" required minlength="3" appForbiddenName="bob" name="name" class="form-control"
+        #name2="ngModel" placeholder="Your Name" autofocus>
+      <br>
+      <br>
+
+
+
+
+      <div *ngIf="name2.invalid && (name2.dirty || name2.touched)" class="alert alert-danger">
+
+        <div *ngIf="name2.errors.required">
+          Name is required.
+        </div>
+        <div *ngIf="name2.errors.minlength">
+          Name must be at least 3 characters long.
+        </div>
+        <div *ngIf="name2.errors.forbiddenName">
+          Name cannot be Bob.
+        </div>
+
+      </div>
+
+
+
+
+
+      <div class="form-group" [ngClass]="{  
+                'has-danger': email2.invalid && (email2.dirty || email2.touched),  
+                'has-success': email2.valid && (email2.dirty || email2.touched)}">
+        <label class="sr-only" for="email"></label>
+        <input type="email" class="form-control" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" id="email" name="email" [(ngModel)]="email"
+          required #email2="ngModel" placeholder="Email" autofocus>
+        <br>
+        <br>
+        <div class="alert alert-danger" *ngIf="email2.errors && (email2.dirty || email2.touched)">
+          <p *ngIf="email2.errors.required">Email is required</p>
+          <p *ngIf="email2.errors.pattern">Please provide a valid email address</p>
+        </div>
+      </div>
+
+
+
+      <input input type="number" id="phone" [(ngModel)]="phone" required pattern="^((\\+91-?)|0)?[0-9]{10}$" name="phone" class="form-control"
+        #phone2="ngModel" placeholder="Mobile Number" autofocus>
+      <br>
+      <br>
+
+
+
+
+      <div *ngIf="phone2.invalid && (phone2.dirty || phone2.touched)" class="alert alert-danger">
+
+        <div *ngIf="phone2.errors.required">
+          Mobile Number is required.
+        </div>
+        <div *ngIf="phone2.errors.pattern">
+          Not Valid Mobile Number it must be 10 Digit
+        </div>
+
+      </div>
+
+
+
+
+
+
+
+
+
+
+
+      <show-hide-password size="lg" title="Show">
+        <label for="inputPassword" class="sr-only">Password</label>
+        <input type="password" [(ngModel)]="password" name="password" required class="form-control" placeholder="Password" #password2="ngModel"
+          autofocus>
+        <br>
+        <br>
+      </show-hide-password>
+      <div *ngIf="password2.invalid && (password2.dirty || password2.touched)" class="alert alert-danger"></div>
+
+
+
+        <input type="button" (click)="addUser()" [(ngModel)]="button" #button2="ngModel" class="btn btn-lg btn-primary btn-block"
+          value="Submit">
+
+        <input type="reset" class="btn btn-lg btn-primary btn-block" value="Add More">
+    
+    </form>
+</div>
+</body>
+
+</html>

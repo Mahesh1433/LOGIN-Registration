@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    
+    <title>Login Page</title>
+
+   
+    
+  </head>
+
+  <body class="text-center">
+   
+    <div align="center">
+    <form (submit)="LoginUser()" class="form-signin" align="center">
+      <img src="e.jpg" alt="" width="72" height="72">
+     <br><br><br>
+
+     <div class="form-group" [ngClass]="{  
+      'has-danger': email2.invalid && (email2.dirty || email2.touched),  
+      'has-success': email2.valid && (email2.dirty || email2.touched)}">  
+      <label class="form-control-label" for="email"></label>  
+      <input type="email" class="form-control" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"  id="email" name="email" [(ngModel)]="email" required  
+      #email2="ngModel" placeholder="Email" autofocus>  
+      <div class="alert alert-danger" *ngIf="email2.errors && (email2.dirty || email2.touched)">  
+      <p *ngIf="email2.errors.required">Email is required</p>  
+      <p *ngIf="email2.errors.pattern">Please provide a valid email address</p>  
+      </div>  
+      </div>
+     
+
+      <div><input type="button" (click)="getName()" value="Click"></div>
+       
+      
+      <show-hide-password size="lg" title="Show">
+      
+      
+      <label for="inputPassword" class="sr-only">Password</label>
+      <input type="password" [(ngModel)]="password" name="password" required class="form-control"
+       placeholder="Password" #password2="ngModel" autofocus><br><br> </show-hide-password>
+      <div *ngIf="password2.invalid && (password2.dirty || password2.touched)"
+          class="alert alert-danger">
+        
+        <div *ngIf="password2.errors.required">
+          Password is required.
+        </div>
+        </div>
+     
+      <div><h5 style="color: blue; font-style: unset;">{{users}}</h5></div><br>
+     
+      <div align="right"><a routerLink="/Details">Forgot Password</a></div><br>
+     
+      <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button><br>
+     
+      
+      <div class="btn-group">
+        <h6 style="color: darkgreen">New user click here..</h6><button><a routerLink="/register"  routerLinkActive="active-link"> Register</a></button>
+        
+      </div>
+      <div>
+      <p class="mt-5 mb-3 text-muted">&copy; 2017-2018</p>
+    </div>
+
+
+
+   
+
+
+
+
+    </form>
+   
+    
+
+
+
